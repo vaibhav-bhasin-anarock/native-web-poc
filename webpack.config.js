@@ -6,14 +6,22 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        use: 'babel-loader',
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-      },
-    ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript',
+            ],
+          },
+        },
+      },]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
     alias: {
       'react-native$': 'react-native-web',
     },
